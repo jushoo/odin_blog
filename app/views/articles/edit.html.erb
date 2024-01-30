@@ -1,3 +1,7 @@
-<h1>Edit Article</h1>
-
-<%= render "form", article: @article%>
+<div class="flex-col w-full mx-auto">
+  <div class="text-2xl font-bold mb-4 text-blue-500">
+    <%= link_to "Back", root_path, class: "hover:underline" %>
+  </div>
+  <h1 class="text-3xl font-bold hover:underline mb-8">Edit Article</h1>
+  <%= render "form", article: @article %>
+</div>

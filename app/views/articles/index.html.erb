@@ -5,18 +5,18 @@
     </h1>
   </div>
 
-  <div class="w-full">
-      <% @articles.each do |article| %>
-        <div class="min-h-7 text-xl">
-          <%= link_to article.title, article, class: "hover:font-bold hover:underline" %>
-          <p class="text-xs text-slate-500">
-            posted: <%= time_ago_in_words article.created_at %>
-          </p>
-        </div>
-      <% end %>
+  <div class="w-full mb-8">
+    <% @articles.each do |article| %>
+      <div class="min-h-7 text-xl">
+        <%= link_to article.title, article, class: "hover:font-bold hover:underline" %>
+        <p class="text-xs text-slate-500">
+          posted: <%= time_ago_in_words article.created_at %>
+        </p>
+      </div>
+    <% end %>
   </div>
 
   <div>
-    <%= link_to "New Article", new_article_path %>
+    <%= link_to "New Article", new_article_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
   </div>
 </div>
