@@ -33,19 +33,19 @@ jobs:
         run: |
           echo "tag=$(git rev-parse "$GITHUB_SHA")" >> $GITHUB_OUTPUT
 
-      # - name: Build image
-      #   uses: docker/build-push-action@v5
-      #   with:
-      #     context: .
-      #     builder: ${{ steps.buildx.outputs.name }}
-      #     push: true
-      #     labels: |
-      #       "service=djs-blog"
-      #     tags: |
-      #       "jushoo/djs-blog:latest"
-      #       "jushoo/djs-blog:${{ steps.tag.outputs.tag }}"
-      #     cache-from: type=gha
-      #     cache-to: type=gha,mode=max
+      - name: Build image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          builder: ${{ steps.buildx.outputs.name }}
+          push: true
+          labels: |
+            "service=djs-blog"
+          tags: |
+            "jushoo/djs-blog:latest"
+            "jushoo/djs-blog:${{ steps.tag.outputs.tag }}"
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - uses: webfactory/ssh-agent@v0.7.0
         with:
@@ -57,7 +57,7 @@ jobs:
           bundler-cache: true
 
       - name: Deploy command
-        run: bundle exec kamal deploy
+        run: bundle exec kamal deploy --skip-push --version=latest
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
