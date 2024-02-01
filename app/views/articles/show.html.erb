@@ -1,17 +1,13 @@
 <div class="flex-col mx-auto w-full">
   <div class="space-y-4 w-full mb-8">
     <h1 class="text-3xl font-bold">
-      <%= link_to 'All Articles', root_path, class: "hover:underline" %>
+      <%= link_to 'Articles', root_path, class: "hover:underline" %>
     </h1>
   </div>
 
-  <div class="w-full mb-8">
-    <h1 class="text-3xl font-bold"><%= @article.title %></h1>
-  </div>
-
-  <div class="w-full mb-8">
-    <p><%= @article.body %>
-    <p>
+  <div class="w-full mb-8 bg-slate-100 rounded p-6 shadow-sm shadow-slate-300">
+    <h1 class="text-3xl font-bold mb-4"><%= @article.title %></h1>
+    <p class="text-xl"><%= @article.body %><p>
   </div>
 
   <%= link_to :Edit, edit_article_path(@article), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
@@ -22,7 +18,7 @@
     <%= render @article.comments %>
   </div>
 
-  <div class="w-full mt-8">
+  <div class="w-1/2 mt-8">
     <h2 class="text-2xl font-bold mb-4 hover:underline">Add a comment:</h2>
 
     <%= form_with model: [ @article, @article.comments.build ] do |form| %>
