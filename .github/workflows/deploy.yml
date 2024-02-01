@@ -40,7 +40,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           labels: |
-            "service=jushoo/djs-blog"
+            "service=djs-blog"
           tags: |
             "jushoo/djs-blog:latest"
             "jushoo/djs-blog:${{ steps.tag.outputs.tag }}"
